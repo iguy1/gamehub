@@ -1,0 +1,168 @@
+/* tic-tac-toe.css - Pure CSS without Tailwind */
+
+/* Reset and base styles */
+:root {
+    --primary-color: #3b82f6;
+    --primary-hover: #2563eb;
+    --outline-color: #333;
+    --light-bg: #f3f4f6;
+    --dark-bg: #1f2937;
+    --light-text: #f9fafb;
+    --dark-text: #111827;
+    --border-radius: 4px;
+    --spacing-sm: 8px;
+    --spacing-md: 16px;
+    --spacing-lg: 32px;
+  }
+  
+  /* Light/Dark mode variables */
+  .light-mode {
+    --bg-color: var(--light-bg);
+    --text-color: var(--dark-text);
+    --border-color: #333;
+  }
+  
+  .dark-mode {
+    --bg-color: var(--dark-bg);
+    --text-color: var(--light-text);
+    --border-color: #fff;
+  }
+  
+  /* Default to light mode if no class is applied */
+  body {
+    --bg-color: var(--light-bg);
+    --text-color: var(--dark-text);
+    --border-color: #333;
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  }
+  
+  /* Game container */
+  .game-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    padding: var(--spacing-md);
+  }
+  
+  /* Game title */
+  .game-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: var(--spacing-lg);
+  }
+  
+  /* Game board */
+  .game-board {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-sm);
+  }
+  
+  /* Game square */
+  .game-square {
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    font-weight: bold;
+    background-color: transparent;
+    border: 2px solid var(--border-color);
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+  
+  .game-square:hover {
+    background-color: rgba(128, 128, 128, 0.1);
+  }
+  
+  .game-square.x-mark {
+    color: #3b82f6; /* Blue for X */
+  }
+  
+  .game-square.o-mark {
+    color: #ef4444; /* Red for O */
+  }
+  
+  /* Game status */
+  .game-status {
+    margin-top: var(--spacing-md);
+    font-size: 1.25rem;
+    font-weight: 600;
+  }
+  
+  /* Button styles */
+  .btn {
+    padding: var(--spacing-sm) var(--spacing-md);
+    font-size: 1rem;
+    font-weight: 500;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.1s;
+    border: none;
+    margin-top: var(--spacing-md);
+  }
+  
+  .btn:active {
+    transform: scale(0.98);
+  }
+  
+  /* Default button */
+  .btn-default {
+    background-color: var(--primary-color);
+    color: white;
+  }
+  
+  .btn-default:hover {
+    background-color: var(--primary-hover);
+  }
+  
+  /* Outline button */
+  .btn-outline {
+    background-color: transparent;
+    border: 2px solid var(--border-color);
+    color: var(--text-color);
+  }
+  
+  .btn-outline:hover {
+    background-color: rgba(128, 128, 128, 0.1);
+  }
+  
+  /* Winner highlight */
+  .winner-highlight {
+    background-color: rgba(74, 222, 128, 0.2);
+  }
+  
+  /* Dark mode toggle (if you want to add it) */
+  .theme-toggle {
+    position: absolute;
+    top: var(--spacing-md);
+    right: var(--spacing-md);
+    padding: var(--spacing-sm);
+    border-radius: 50%;
+    background-color: rgba(128, 128, 128, 0.2);
+    border: none;
+    cursor: pointer;
+  }
+  
+  /* Responsive design */
+  @media (max-width: 640px) {
+    .game-square {
+      width: 64px;
+      height: 64px;
+      font-size: 1.5rem;
+    }
+    
+    .game-title {
+      font-size: 1.875rem;
+      margin-bottom: var(--spacing-md);
+    }
+  }
+  
