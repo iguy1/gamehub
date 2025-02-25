@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './navbar.css';
-import logo from './bluehenlogo.gif';
+import gaming from './gaming.gif'; 
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -14,16 +14,18 @@ function Navbar() {
     <nav className="navbar">
       <div className="navbar-container">
         <div className="navbar-logo">
-        <Link to="/">
-            <img src={logo} alt="Logo" className="logo-image" sytle ={{width:"500px"}} />
-            <span className="logo-text"></span>
+          <Link to="/">
+            <img src={gaming} alt="Logo" className="logo-image" style={{ width: "120px" }} />
+            <span className="logo-text">GameHub</span>
           </Link>
         </div>
         <div className={`navbar-links ${isOpen ? 'open' : ''}`}>
           <ul>
             <li>
-              <Link to="/" onClick={toggleNavbar}>Home</Link>
-              <Link to= "/tictactoe" onClick={toggleNavbar}>TicTacToe</Link>
+              <Link to="/">Home</Link>
+            </li>
+            <li>
+              <Link to="/tictactoe">TicTacToe</Link>
             </li>
           </ul>
         </div>

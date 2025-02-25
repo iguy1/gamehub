@@ -1,22 +1,17 @@
 
 import './App.css';
-import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
+import Navbar from './navbar';
 import TicTacToe from './TicTacToe';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
-function Home(){
-  return(
-    <div>
-      <h2>Welcome to the GameHub where you can find your favorite games to play.</h2>
-      
-    </div>
-  );
-}
+import Home from './Home'; 
+
 function App() {
   return (
     
        <Router>
       <div className="App">
-        <h1>TicTacToe</h1>
+        <Navbar/>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/tictactoe" element={<TicTacToe />} />
