@@ -9,7 +9,6 @@ import CopterGame from './coptergame';
 import Slither from './slither';
 import ChessGame from './chess';
 
-
 function App() {
   return (
     
