@@ -36,6 +36,9 @@ function Navbar() {
             <li>
               <Link to = "/slither">SnakeGame</Link>
             </li>
+            <li>
+              <Link to="/chess">Chess</Link>
+            </li>
           </ul>
         </div>
         <div className="navbar-toggle" onClick={toggleNavbar}>

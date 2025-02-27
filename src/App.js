@@ -7,6 +7,7 @@ import Home from './Home';
 import Game from './game';
 import CopterGame from './coptergame';
 import Slither from './slither';
+import ChessGame from './chess';
 
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
           <Route path="/game" element={<Game />} />
           <Route path="/" element={<CopterGame />} />
           <Route path="/slither" element={<Slither />} />
+          <Route path="/chess" element={<ChessGame />} />
           {/* Add more routes here */}
         </Routes>
       </div>
