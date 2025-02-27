@@ -1,0 +1,36 @@
+.game-container {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    background: #87ceeb; /* Sky blue background */
+  }
+  
+  .score {
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 20px;
+    color: black;
+    font-family: Arial, sans-serif;
+  }
+  
+  .copter {
+    position: absolute;
+    font-size: 40px;
+  }
+  
+  .drop {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: blue;
+    border-radius: 50%;
+  }
+  
+  .fire {
+    position: absolute;
+    font-size: 20px;
+    text-align: center;
+  }

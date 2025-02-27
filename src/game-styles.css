@@ -1,0 +1,160 @@
+/* game-styles.css */
+canvas {
+  border: 1px solid #000;
+  display: block;
+  margin: 20px auto;
+}
+
+/* Base character styles container */
+.character {
+  position: absolute;
+  transition: transform 0.1s ease-out;
+}
+
+/* Mordecai styles (blue jay) */
+.mordecai {
+  width: 50px;
+  height: 70px;
+  background: linear-gradient(
+    to bottom,
+    #00B7EB 30%, /* Blue head */
+    #FFFFFF 30%, /* White face */
+    #FFFFFF 50%, 
+    #808080 50%  /* Gray body */
+  );
+  border: 2px solid #000;
+  border-radius: 10px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Mordecai's beak */
+.mordecai::before {
+  content: '';
+  position: absolute;
+  width: 15px;
+  height: 10px;
+  background: #FFA500;
+  top: 25px;
+  left: 45px;
+  clip-path: polygon(0 0, 100% 0, 100% 100%);
+}
+
+/* Mordecai's eyes */
+.mordecai::after {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 10px;
+  background: white;
+  border: 1px solid black;
+  border-radius: 50%;
+  top: 15px;
+  left: 20px;
+  box-shadow: -5px 0 0 2px black inset;
+}
+
+/* Rigby styles (raccoon) */
+.rigby {
+  width: 50px;
+  height: 70px;
+  background: linear-gradient(
+    to bottom,
+    #8B4513 40%, /* Brown top */
+    #D2B48C 40%  /* Tan belly */
+  );
+  border: 2px solid #000;
+  border-radius: 15px 15px 5px 5px;
+  position: relative;
+}
+
+/* Rigby's tail stripes */
+.rigby::before {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 40px;
+  background: repeating-linear-gradient(
+    45deg,
+    #4A2F1A,
+    #4A2F1A 5px,
+    #8B4513 5px,
+    #8B4513 10px
+  );
+  left: -15px;
+  bottom: 0;
+  border-radius: 10px 0 0 10px;
+}
+
+/* Rigby's eyes */
+.rigby::after {
+  content: '';
+  position: absolute;
+  width: 18px;
+  height: 12px;
+  background: white;
+  border: 1px solid black;
+  border-radius: 50%;
+  top: 15px;
+  left: 15px;
+  box-shadow: 10px 0 0 0 white, 
+              10px 0 0 1px black;
+}
+
+/* Jumping animation */
+@keyframes jump {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+  100% { transform: translateY(0); }
+}
+
+.jumping {
+  animation: jump 0.5s ease-out;
+}
+
+/* Collectible (could be styled as food items) */
+.collectible {
+  width: 25px;
+  height: 25px;
+  background: #FFD700; /* Gold for a sandwich or snack */
+  border-radius: 50%;
+  border: 2px solid #DAA520;
+  position: absolute;
+}
+
+/* Obstacle (could be styled as furniture or trash) */
+.obstacle {
+  width: 30px;
+  height: 30px;
+  background: #666633; /* Dirty brown */
+  border: 2px solid #333300;
+  border-radius: 5px;
+  position: absolute;
+}
+
+/* Buttons */
+button {
+  margin: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+/* Game over text */
+div[style*="Game Over"] {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 32px;
+  color: red;
+  text-shadow: 2px 2px 4px #000;
+} 

@@ -22,10 +22,19 @@ function Navbar() {
         <div className={`navbar-links ${isOpen ? 'open' : ''}`}>
           <ul>
             <li>
-              <Link to="/">Home</Link>
+              <Link to="/home">Home</Link>
             </li>
             <li>
               <Link to="/tictactoe">TicTacToe</Link>
+            </li>
+            <li>
+              <Link to="/game">Regular Show</Link>
+            </li>
+            <li>
+              <Link to="/">Copter Game</Link>
+            </li>
+            <li>
+              <Link to = "/slither">SnakeGame</Link>
             </li>
           </ul>
         </div>
