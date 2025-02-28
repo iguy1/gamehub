@@ -1,5 +1,3 @@
-"use client";
-
 import React, { useEffect, useRef, useState, useCallback } from "react";
 
 const CANVAS_SIZE = 400;
@@ -143,15 +141,71 @@ function movePiece(board, fromRow, fromCol, toRow, toCol) {
 }
 
 function isValidMove(board, fromRow, fromCol, toRow, toCol) {
-  // Implement chess rules here
-  // This is a simplified version that only checks if the destination is empty or an opponent's piece
   const piece = board[fromRow][fromCol];
   const destPiece = board[toRow][toCol];
 
   if (!piece) return false;
   if (destPiece && destPiece.toUpperCase() === piece.toUpperCase()) return false;
 
-  // Add more specific rules for each piece type here
+  const rowDiff = toRow - fromRow;
+  const colDiff = toCol - fromCol;
+
+  switch (piece.toLowerCase()) {
+    case "p": // Pawn
+      if (piece === "P") {
+        if (fromRow === 6 && toRow === 4 && fromCol === toCol && !destPiece) return true; // Initial double move
+        if (rowDiff === -1 && fromCol === toCol && !destPiece) return true; // Single move
+        if (rowDiff === -1 && Math.abs(colDiff) === 1 && destPiece && destPiece === destPiece.toLowerCase()) return true; // Capture
+      } else {
+        if (fromRow === 1 && toRow === 3 && fromCol === toCol && !destPiece) return true; // Initial double move
+        if (rowDiff === 1 && fromCol === toCol && !destPiece) return true; // Single move
+        if (rowDiff === 1 && Math.abs(colDiff) === 1 && destPiece && destPiece === destPiece.toUpperCase()) return true; // Capture
+      }
+      break;
+    case "r": // Rook
+      if (fromRow === toRow || fromCol === toCol) {
+        if (isPathClear(board, fromRow, fromCol, toRow, toCol)) return true;
+      }
+      break;
+    case "n": // Knight
+      if ((Math.abs(rowDiff) === 2 && Math.abs(colDiff) === 1) || (Math.abs(rowDiff) === 1 && Math.abs(colDiff) === 2)) {
+        return true;
+      }
+      break;
+    case "b": // Bishop
+      if (Math.abs(rowDiff) === Math.abs(colDiff)) {
+        if (isPathClear(board, fromRow, fromCol, toRow, toCol)) return true;
+      }
+      break;
+    case "q": // Queen
+      if (fromRow === toRow || fromCol === toCol || Math.abs(rowDiff) === Math.abs(colDiff)) {
+        if (isPathClear(board, fromRow, fromCol, toRow, toCol)) return true;
+      }
+      break;
+    case "k": // King
+      if (Math.abs(rowDiff) <= 1 && Math.abs(colDiff) <= 1) {
+        return true;
+      }
+      break;
+    default:
+      return false;
+  }
+
+  return false;
+}
+
+function isPathClear(board, fromRow, fromCol, toRow, toCol) {
+  const rowStep = Math.sign(toRow - fromRow);
+  const colStep = Math.sign(toCol - fromCol);
+
+  let currentRow = fromRow + rowStep;
+  let currentCol = fromCol + colStep;
+
+  while (currentRow !== toRow || currentCol !== toCol) {
+    if (board[currentRow][currentCol]) return false;
+    currentRow += rowStep;
+    currentCol += colStep;
+  }
 
   return true;
 }
@@ -180,6 +234,10 @@ function makeRandomMove(board) {
       { row: row + 1, col },
       { row, col: col - 1 },
       { row, col: col + 1 },
+      { row: row - 1, col: col - 1 },
+      { row: row - 1, col: col + 1 },
+      { row: row + 1, col: col - 1 },
+      { row: row + 1, col: col + 1 },
     ];
 
     for (const move of possibleMoves) {
