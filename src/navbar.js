@@ -54,7 +54,7 @@ function Navbar() {
         <button className="dropdown-button">Games</button>
         {isDropdownOpen && (
           <div className="dropdown-content">
-            <Link to="/home">Home</Link>
+            <Link to="/gamehub">Home</Link>
             <Link to="/tictactoe">TicTacToe</Link>
             <Link to="/game">Regular Show</Link>
             <Link to="/">Copter Game</Link>
