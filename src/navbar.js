@@ -5,9 +5,14 @@ import gaming from './gaming.gif';
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [isDropdownOpen, setDropdownOpen] = useState(false);
 
   const toggleNavbar = () => {
     setIsOpen(!isOpen);
+  };
+
+  const toggleDropdown = () => {
+    setDropdownOpen(!isDropdownOpen);
   };
 
   return (
@@ -34,7 +39,7 @@ function Navbar() {
               <Link to="/">Copter Game</Link>
             </li>
             <li>
-              <Link to = "/slither">SnakeGame</Link>
+              <Link to="/slither">SnakeGame</Link>
             </li>
             <li>
               <Link to="/chess">Chess</Link>
@@ -44,6 +49,19 @@ function Navbar() {
         <div className="navbar-toggle" onClick={toggleNavbar}>
           <span className="navbar-toggle-icon">&#9776;</span>
         </div>
+      </div>
+      <div className="navbar-dropdown" onMouseEnter={toggleDropdown} onMouseLeave={toggleDropdown}>
+        <button className="dropdown-button">Games</button>
+        {isDropdownOpen && (
+          <div className="dropdown-content">
+            <Link to="/home">Home</Link>
+            <Link to="/tictactoe">TicTacToe</Link>
+            <Link to="/game">Regular Show</Link>
+            <Link to="/">Copter Game</Link>
+            <Link to="/slither">SnakeGame</Link>
+            <Link to="/chess">Chess</Link>
+          </div>
+        )}
       </div>
     </nav>
   );

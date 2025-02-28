@@ -1,211 +1,148 @@
-/* Import modern font */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
-
-/* Reset and base styles */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  font-family: 'Inter', sans-serif;
-}
-
-/* Modern Navbar */
 .navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 2rem;
-  background-color: #121212;
-  color: rgb(0, 0, 0);
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  background-color: #333;
+  overflow: hidden;
   position: fixed;
-  width: 100%;
   top: 0;
-  z-index: 1000;
-  height: 80px;
-  transition: all 0.3s ease;
+  right: 0; /* Change from left to right */
+  height: 100%;
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 20px;
+  z-index: 1000; /* Ensure the navbar is on top */
 }
 
 .navbar-container {
   display: flex;
-  justify-content: flex-start;
+  flex-direction: column;
   align-items: center;
   width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
 }
 
 .navbar-logo {
   display: flex;
   align-items: center;
-}
-
-.navbar-logo a {
-  text-decoration: none;
-  display: flex;
-  align-items: center;
-  font-weight: 700;
+  margin-bottom: 20px;
 }
 
 .logo-image {
-  height: 40px;
-  width: auto;
-  margin-right: 12px;
-  transition: transform 0.3s ease;
-}
-
-.logo-image:hover {
-  transform: scale(1.05);
+  margin-right: 10px;
 }
 
 .logo-text {
   color: white;
-  font-size: 1.2rem;
-  letter-spacing: 0.5px;
+  font-size: 24px;
+  font-weight: bold;
 }
 
-/* Fix for the navbar links spacing */
 .navbar-links {
   display: flex;
-  list-style: none;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
 }
 
-/* This ensures spacing regardless of your HTML structure */
-.navbar-links > li {
-  margin-right: 2rem; /* Increased spacing between links */
-  position: relative;
-}
-
-.navbar-links > li:last-child {
-  margin-right: 0; /* Remove margin from last item */
-}
-
-/* If you're using a nested ul structure */
 .navbar-links ul {
   display: flex;
+  flex-direction: column;
   list-style: none;
-  gap: 2rem; /* Increased gap for better spacing */
+  margin: 0;
+  padding: 0;
+  width: 100%;
 }
 
 .navbar-links li {
-  position: relative;
+  width: 100%;
 }
 
 .navbar-links a {
+  color: white;
   text-decoration: none;
-  color: rgba(255, 255, 255, 0.9);
-  font-size: 0.95rem;
-  font-weight: 500;
-  padding: 0.5rem 0.75rem; /* Added horizontal padding for larger click area */
-  transition: all 0.2s ease;
-  position: relative;
-  white-space: nowrap; /* Prevents text wrapping */
-}
-
-/* Modern hover effect with underline */
-.navbar-links a::after {
-  content: '';
-  position: absolute;
-  width: 0;
-  height: 2px;
-  bottom: 0;
-  left: 0;
-  background-color: blue;
-  transition: width 0.3s ease;
+  padding: 14px 20px;
+  display: block;
+  width: 100%;
+  text-align: center;
 }
 
 .navbar-links a:hover {
-  color: blue;
-}
-
-.navbar-links a:hover::after {
-  width: 100%;
+  background-color: #575757;
 }
 
 .navbar-toggle {
   display: none;
   cursor: pointer;
-  background: transparent;
-  border: none;
-  padding: 0.5rem;
-  color: white;
 }
 
 .navbar-toggle-icon {
-  font-size: 1.5rem;
+  font-size: 24px;
   color: white;
-  transition: transform 0.3s ease;
 }
 
-/* Modern hamburger animation */
-.navbar-toggle.open .navbar-toggle-icon {
-  transform: rotate(90deg);
+.navbar-links.open {
+  display: block;
 }
 
-/* Media query for mobile devices */
-@media (max-width: 768px) {
+.navbar-dropdown {
+  display: none;
+  position: relative;
+  width: 100%;
+}
+
+.dropdown-button {
+  background-color: #333;
+  color: white;
+  border: none;
+  padding: 14px 20px;
+  cursor: pointer;
+  width: 100%;
+  text-align: center;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #333;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  right: 200px; /* Adjust this value to position the dropdown content */
+  top: 0;
+}
+
+.dropdown-content a {
+  color: white;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {
+  background-color: #575757;
+}
+
+.navbar-dropdown:hover .dropdown-content {
+  display: block;
+}
+
+@media screen and (max-width: 768px) {
   .navbar {
-    padding: 0 1rem;
-    height: 70px;
+    width: 100%;
+    height: auto;
+    position: relative;
   }
-  
-  .navbar-container {
-    justify-content: space-between;
-  }
-  
+
   .navbar-links {
     display: none;
     flex-direction: column;
     width: 100%;
-    background-color: #121212; /* Matching the navbar color */
-    position: absolute;
-    top: 70px;
-    left: 0;
-    padding: 1rem 0;
-    border-radius: 0 0 8px 8px;
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-    opacity: 0;
-    transform: translateY(-10px);
-    transition: opacity 0.3s ease, transform 0.3s ease;
   }
-  
-  .navbar-links.open {
-    display: flex;
-    opacity: 1;
-    transform: translateY(0);
-  }
-  
-  .navbar-links > li,
-  .navbar-links ul > li {
-    margin: 0;
-    text-align: center;
-    padding: 0.5rem 0;
-  }
-  
-  .navbar-links ul {
-    flex-direction: column;
-    width: 100%;
-    gap: 0;
-  }
-  
-  .navbar-links a {
-    display: block;
-    padding: 0.75rem 0;
-    font-size: 1rem;
-  }
-  
+
   .navbar-toggle {
     display: block;
   }
-  
-  .logo-text {
-    font-size: 1rem;
-  }
-  
-  .logo-image {
-    height: 36px;
+
+  .navbar-dropdown {
+    display: block;
   }
 }
